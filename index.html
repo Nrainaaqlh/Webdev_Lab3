@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aina's Personal Website</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color:beige;
+    }
+    
+    header, footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 30px;
+    }
+
+    header{
+        margin-bottom: 30px;
+    }
+
+    footer{
+        margin-top: 30px;
+    }
+
+    footer p {
+        margin: 5px 0;
+    }
+
+    .aboutme {
+        display: flex;
+        align-items: center;
+        text-align: justify;
+        justify-content: center;
+        gap: 2.5rem;
+        max-width: 68.75rem;
+        margin: auto;
+    }
+
+    .aboutme img {
+        display: none;
+            width: 18.6rem;
+            height: auto;
+            border: 10px solid #333; 
+            border-radius: 15px; 
+    }
+    .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+    .bio {
+        width: 25rem;
+        padding: 0.625rem;
+        border-radius: 6px;
+        box-shadow: 0px 2px 15px 2px var(--primary-shadow);
+    }
+
+    .bio h1 {
+        margin-bottom: var(--bottom-margin);
+    }
+
+    .bio p {
+        line-height: var(--line-height);
+        padding: 0.3rem 0;
+    }
+
+    .skills {
+        max-width: 68.75rem;
+        margin: auto;
+        text-align: center;
+        margin-top: 2.5rem;
+    }
+
+    .skill-header {
+        margin-bottom: 1rem;
+    }
+
+    .skills-wrapper img {
+        padding: 1.25rem;
+    }
+
+    .icon {
+        width: 11.875rem;
+        height: 11.25rem;
+    }
+
+    .icon-card {
+        background-color: #333;
+        border-radius: 11px;
+        box-shadow: 0 3px 10px var(--secondary-shadow);
+        padding: 20px;
+        margin: 10px;
+    }
+
+    #hobbies {
+        margin: auto;
+        max-width: 68.75rem;
+}
+
+
+    #campus {
+    text-align: justify;
+    max-width: 68.75rem;
+    margin: auto;
+    }
+    
+    .gallery{
+	position: relative;
+	height: auto;
+	width: 90%;
+	margin: auto;
+	padding: 45px 0;
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 2vh;
+	grid-auto-flow: dense;
+    }
+    
+    .gallery .img{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.9 );
+	border-radius: 2px;
+    }
+    
+    .gallery .img:first-child{
+	grid-column-start: span 2;
+	grid-row-start: span 2;
+    }
+
+    .gallery .img:nth-child(2n+3){
+	grid-row-start: span 2;
+    }
+
+    .gallery .img:nth-child(4n+5){
+	grid-column-start: span 2;
+	grid-row-start: span 2;
+    }
+
+    .gallery .img:nth-child(6n+7){
+	grid-row-start: span 1;
+    }
+    
+    .gallery .img:nth-child(8n+9){
+	grid-column-start: span 1;
+	grid-row-start: span 1;
+    }
+    
+    .gallery .img img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	filter: brightness(0.5) grayscale(100);
+	border-radius: 2px;
+	transition: 0.3s ease-in-out;
+    }
+
+    .gallery .img:hover img{
+	filter: brightness(1) grayscale(0);
+    
+    }
+
+    @media only screen and (max-width: 768px){
+	    .main h1{
+		    font-size: 1.8em;
+		    width: 400px;
+    	}
+    	.main p{
+    		font-size: 1.2em;
+    	}
+    	.main .gallery{
+    		display: grid;
+    		grid-template-columns: auto auto auto;
+	    }
+    }
+    @media only screen and (max-width: 430px){
+	    .main h1{
+		    font-size: 1.2em;
+		    width: 300px;
+	    }
+	    .main p{
+		    font-size: 0.89em;
+	    }
+	    .main .gallery{
+		    display: block;
+	    }
+	    .main .gallery .img{
+		    display: block;
+		    width: 100%;
+		    height: 100%;
+		    margin:2% 0;
+	    }
+	    .main .gallery .img img{
+		    display: block;
+		    filter: brightness(1) grayscale(0);
+	    }
+    }
+
+    .video-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .video-item {
+        max-width: 300px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .video-item video {
+        width: 100%;
+        height: auto;
+    }
+
+</style>
+<script>
+    let slideIndex = 0;
+
+function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("aboutme-img");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    slides[slideIndex-1].style.display = "block";  
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
+</head>
+<body  onload="showSlides()"></body>
+
+    <header>
+        <h1>Welcome to My Personal Website</h1>
+    </header>
+
+    <section class="aboutme" id="about">
+        <div class="slideshow-container">
+            <img src="g1.jpeg" class="aboutme-img" />
+            <img src="g2.jpeg" class="aboutme-img" />
+            <img src="g3.jpeg" class="aboutme-img" />
+            <img src="g4.jpeg" class="aboutme-img" />
+        </div>
+        <div class="bio animate__animated animate__shakeX">
+          <h2 class="bio-title">About Me</h2>
+          <p class="bio-text">
+            Hi! My name is Nur Aina Aqilah binti Hassan, and I am 21 years old. I am currently pursuing a degree in Software Engineering at the University 
+            Tun Hussein Onn Malaysia. I was born on the 19th of September, 2002, and I am a proud Muslim of Malay ethnicity. I come from a warm and vibrant neighborhood, 
+            residing at No. 64, Jalan Seroja 23, Taman Johor Jaya, 81100 Johor Bahru, Johor. With a passion for technology and a keen interest in coding, I am enthusiastic about the endless
+            possibilities that lie ahead in the field of Software Engineering. I am dedicated to learning and growing in my chosen field and look 
+            forward to making a positive impact in the world of technology.
+          </p>
+        </div>
+  </section>
+
+  <section class="skills" id="skills">
+    <h2 class="skill-header">My Top Skills</h2>
+
+    <div class="skills-wrapper">
+      <div class="first-set animate__animated animate__pulse">
+        <img
+          src="icon1.png"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+        <img
+          src="icon2.png"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+        <img
+          src="icon3.png"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+      </div>
+
+      <div class="second-set animate__animated animate__pulse">
+        <img
+          src="icon4.png"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+        <img
+          src="icon5.png"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+        <img
+          src="icon6.webp"
+          alt=""
+          loading="lazy"
+          class="icon icon-card"
+        />
+      </div>
+    </div>
+    </section>
+
+    <section id="hobbies">
+        <h2>Hobbies</h2>
+        <ul>
+            <li>Hiking</li>
+            <li>Travel</li>
+            <li>Play mobile game</li>
+        </ul>
+    </section>
+
+    <section id="campus">
+        <h2>Campus Life</h2>
+        <p>Campus life is an enriching and dynamic experience that goes far beyond academics. 
+            It's a vibrant tapestry of learning, growth, and lifelong memories. 
+            From engaging lectures to lively discussions, every day on campus offers opportunities to expand one's horizons. 
+            It's a place where friendships flourish, ideas collide, and creativity thrives. 
+            From cheering on our sports teams to participating in community service initiatives, campus life fosters a sense of belonging and purpose. 
+            It's a time of self-discovery, where we develop skills, forge lasting connections, and lay the foundation for a promising future. 
+            Campus life truly shapes us into well-rounded individuals, equipping us with not only academic knowledge but also life skills and experiences that will stay with us forever."</p>
+    </section>
+
+    <div class="gallery">
+        <div class="img">
+            <img src="1.jpeg" />
+        </div>
+        <div class="img">
+            <img src="2.jpeg" />
+        </div>
+        <div class="img">
+            <img src="3.jpeg" />
+        </div>
+        <div class="img">
+            <img src="4.jpeg" />
+        </div>
+        <div class="img">
+            <img src="5.jpeg" />
+        </div>
+        <div class="img">
+            <img src="6.jpeg" />
+        </div>
+        <div class="img">
+            <img src="7.jpeg" />
+        </div>
+        <div class="img">
+            <img src="8.jpeg" />
+        </div>
+        <div class="img">
+            <img src="9.jpeg" />
+        </div>
+        <div class="img">
+            <img src="11.jpeg" />
+        </div>
+        <div class="img">
+            <img src="12.jpeg" />
+        </div>
+        <div class="img">
+            <img src="13.jpeg" />
+        </div>
+        <div class="img">
+            <img src="14.jpeg" />
+        </div>
+        <div class="img">
+            <img src="15.jpeg" />
+        </div>
+        <div class="img">
+            <img src="16.jpeg" />
+        </div>
+    </div>
+
+    <section id="videos">
+        <h2>My Videos</h2>
+        <div class="video-container">
+            <div class="video-item">
+                <video controls>
+                    <source src="v1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="v2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="v3.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact: 
+            <a href="tel:01128771080">Phone number- 01128771080</a> | 
+            <a href="https://www.instagram.com/nrainaaqlh19_/">Instagram - nrainaaqlh19_</a> | 
+            <a href="mailto:ainarul19@gmail.com">Email - ainarul19@gmail.com</a>
+        </p>
+        <p>&copy; 2023 Nur Aina</p>
+    </footer>
+</body>
+</html>
